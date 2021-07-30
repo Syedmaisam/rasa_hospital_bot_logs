@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\keywords;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-
 use App\Models\keyword_logs;
+
 class KeywordController extends Controller
 {
 
@@ -58,9 +58,12 @@ class KeywordController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(keywords $product)
+    public function show($product)
     {
-        return view('products.show',compact('product'));
+        // dd($product);
+        $products =  keyword_logs::where('keyword_id',$product)->orderBy('id', 'desc')->paginate(5);
+        // dd($products);
+        return view('products.show',compact('products'));
     }
 
     /**

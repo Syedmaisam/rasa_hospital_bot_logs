@@ -30,7 +30,7 @@
 
         @foreach ($products as $product)
         @php
-            $date = \Carbon\Carbon::parse($product->created_at);
+            $date = \Carbon\Carbon::parse($product->updated_at);
             $now = \Carbon\Carbon::now();
         @endphp
         <tr>
