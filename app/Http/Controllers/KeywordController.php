@@ -17,7 +17,7 @@ class KeywordController extends Controller
      */
     public function index()
     {
-        $products = keywords::orderBy('count', 'desc')->paginate(5);
+        $products = keywords::orderBy('count', 'desc')->paginate(10);
 
         return view('products.index',compact('products'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -61,7 +61,7 @@ class KeywordController extends Controller
     public function show($product)
     {
         // dd($product);
-        $products =  keyword_logs::where('keyword_id',$product)->orderBy('id', 'desc')->paginate(5);
+        $products =  keyword_logs::where('keyword_id',$product)->orderBy('id', 'desc')->paginate(10);
         // dd($products);
         return view('products.show',compact('products'));
     }
